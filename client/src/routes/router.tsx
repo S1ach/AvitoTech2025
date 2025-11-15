@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import AppLayout from "../components/AppLayout/AppLayout";
 import { ListPage } from './ListPage';
 import { ItemPage } from './ItemPage';
