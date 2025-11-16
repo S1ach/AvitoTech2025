@@ -33,7 +33,6 @@ export const StatsApi = {
     },
 
     async getActivity(period: StatsPeriod): Promise<ActivityPoint[]> {
-        // если у тебя именно /chart/activity — оставляй
         const res = await axios.get(`${API}/stats/chart/activity`, {
             params: { period }
         });

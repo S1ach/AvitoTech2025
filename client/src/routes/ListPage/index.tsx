@@ -24,6 +24,9 @@ export function ListPage() {
             ...filters
         })
             .then((data) => {
+
+                console.log("ADS API RESPONSE:", data);
+
                 setItems(data.ads);
                 setTotalPages(data.pagination.totalPages);
                 setTotalItems(data.pagination.totalItems);
@@ -32,6 +35,8 @@ export function ListPage() {
                 setLoading(false);
             });
     };
+
+
 
     useEffect(() => {
         loadPage(page);
@@ -78,6 +83,7 @@ export function ListPage() {
                                         category={item.category}
                                         date={item.createdAt}
                                         status={item.status}
+                                        priority={item.priority}
                                         image={item.images?.[0] || null}
                                     />
                                 ))}

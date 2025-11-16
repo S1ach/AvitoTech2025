@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent } from "@mui/material";
 import {
     BarChart,
     Bar,
@@ -6,7 +6,6 @@ import {
     YAxis,
     Tooltip,
     ResponsiveContainer,
-    Legend,
     Cell
 } from "recharts";
 import type { CategoriesMap } from "../../api/stats";

@@ -4,22 +4,23 @@ export interface Ad {
     description: string;
     price: number;
     category: string;
-    categoryId: number;
-    priority: string;
+    status: string;
     createdAt: string;
-    updatedAt: string;
+
     images: string[];
-    status: "pending" | "approved" | "rejected";
-}
 
-export interface AdsPagination {
-    currentPage: number;
-    totalPages: number;
-    totalItems: number;
-    itemsPerPage: number;
-}
+    seller: {
+        id: number;
+        name: string;
+        avatar?: string;
+        rating: number;
+    };
 
-export interface AdsResponse {
-    ads: Ad[];
-    pagination: AdsPagination;
+    moderationHistory: Array<{
+        id: number;
+        action: "approved" | "rejected" | "changesRequested";
+        moderator: string;
+        comment?: string;
+        timestamp: string;
+    }>;
 }

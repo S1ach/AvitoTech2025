@@ -14,7 +14,9 @@ export interface ListingCardProps {
     date: string;
     image?: string | null;
     status: string;
+    priority?: "urgent" | "normal" | string;
 }
+
 
 export const ListingCard = ({
                                 id,
@@ -23,6 +25,7 @@ export const ListingCard = ({
                                 category,
                                 date,
                                 image,
+                                priority,
     status,
                             }: ListingCardProps) => {
     const formattedDate = formatRelativeTime(date);
@@ -106,6 +109,15 @@ export const ListingCard = ({
                 <Typography variant="subtitle1" fontWeight={300} sx={{fontSize: 14, color: "text.secondary" }}>
                     Статус: {statusMap[status] || "—"}
                 </Typography>
+
+                {priority === "urgent" && (
+                    <Typography
+                        variant="body2"
+                        sx={{ color: "error.main", fontWeight: 600 }}
+                    >
+                        Срочное
+                    </Typography>
+                )}
             </CardContent>
 
 
