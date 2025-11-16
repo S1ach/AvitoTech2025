@@ -42,7 +42,7 @@ export function ItemPage() {
 
     return (
         <Box sx={{ p: 3 }}>
-            <Typography variant="h3" sx={{ mb: 1, fontWeight: 300, fontSize: 14 }}>
+            <Typography variant="h3" sx={{ mb: 1, fontWeight: 300, fontSize: 16 }}>
                 Объявления
             </Typography>
 

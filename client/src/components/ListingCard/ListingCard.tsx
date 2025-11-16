@@ -42,9 +42,7 @@ export const ListingCard = ({
                 color: "inherit",
                 cursor: "pointer",
                 transition: "0.15s",
-                "&:hover": {
-                    boxShadow: 3
-                }
+                "&:hover": { boxShadow: 3 },
             }}
         >
 
