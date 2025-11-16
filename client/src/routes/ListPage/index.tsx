@@ -101,7 +101,7 @@ export function ListPage() {
                     )}
                 </Box>
 
-                <Box sx={{ width: 280 }}>
+                <Box sx={{ width: 300 }}>
                     <Filter
                         onFiltersChange={(f) =>
                             setFilters((prev) => ({ ...prev, ...f }))

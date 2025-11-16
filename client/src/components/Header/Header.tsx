@@ -12,7 +12,6 @@ const Header = () => {
         <AppBar position="static" elevation={0} sx={{ borderBottom: '1px solid #e5e5e5' }}>
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
 
-                {/* лого */}
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <MUILink
                         component={RouterLink}
@@ -26,7 +25,6 @@ const Header = () => {
                     </MUILink>
                 </Box>
 
-                {/* кнопки */}
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     {!isRoot && (
                         <Button
