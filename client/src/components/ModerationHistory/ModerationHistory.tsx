@@ -1,9 +1,12 @@
-import { Card, CardContent, Typography, Box } from "@mui/material";
+import { Card, CardContent, Typography, Box, Divider} from "@mui/material";
+import { moderationActionMap } from "../../utils/moderationActionMap";
+
 
 interface ModerationEntry {
     id: number;
     moderatorName: string;
     action: string;
+    reason?: string;
     comment?: string;
     timestamp: string;
 }
@@ -22,20 +25,37 @@ export const ModerationHistory = ({ history }: Props) => {
                     История модерации
                 </Typography>
 
-                {history.map((entry) => (
-                    <Box key={entry.id} sx={{ mb: 1.5 }}>
-                        <Typography>Модератор: {entry.moderatorName}</Typography>
-                        <Typography>
-                            {new Date(entry.timestamp).toLocaleString()}
-                        </Typography>
-                        <Typography>Статус: {entry.action}</Typography>
-                        {entry.comment && (
-                            <Typography sx={{ opacity: 0.8 }}>
-                                Комментарий: {entry.comment}
+                {history.map((entry) => {
+
+                    return (
+                        <Box key={entry.id} sx={{ mb: 1.5 }}>
+                            <Divider sx={{ my: 2 }} />
+                            <Typography sx={{ fontWeight: "700" }}>
+                                Модератор: {entry.moderatorName}
                             </Typography>
-                        )}
-                    </Box>
-                ))}
+
+                            <Typography>
+                                {new Date(entry.timestamp).toLocaleString()}
+                            </Typography>
+
+                            <Typography>
+                                Статус: {moderationActionMap[entry.action] || entry.action}
+                            </Typography>
+
+                            {entry.reason && (
+                                <Typography>
+                                    Причина: {entry.reason}
+                                </Typography>
+                            )}
+
+                            {entry.comment && (
+                                <Typography sx={{ mt: "2px", opacity: 0.8 }}>
+                                    Комментарий: {entry.comment}
+                                </Typography>
+                            )}
+                        </Box>
+                    );
+                })}
             </CardContent>
         </Card>
     );

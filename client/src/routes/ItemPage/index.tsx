@@ -64,7 +64,7 @@ export function ItemPage() {
                         />
                     </Stack>
                 </Box>
-
+                
                 <Box sx={{ width: 280, flexShrink: 0 }}>
                     <Profile seller={item.seller} />
                 </Box>

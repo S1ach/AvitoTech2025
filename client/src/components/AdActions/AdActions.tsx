@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Stack, Button } from "@mui/material";
 import { AdsApi } from "../../api/ads";
 import type { Ad } from "../../api/ads.types";
+import { RejectModal } from "./RejectModal";
 
 interface Props {
     id: number;
@@ -9,49 +11,62 @@ interface Props {
 }
 
 export const AdActions = ({ id, status, onUpdated }: Props) => {
+    const [rejectOpen, setRejectOpen] = useState(false);
+
     const handleApprove = async () => {
         const res = await AdsApi.approve(id);
         onUpdated(res.ad);
     };
 
-    const handleReject = async () => {
-        const res = await AdsApi.reject(id, "Запрещенный товар", "Комментарий модератора");
-
+    const handleRejectSubmit = async (reason: string, comment?: string) => {
+        const res = await AdsApi.reject(id, reason, comment ?? "");
         onUpdated(res.ad);
     };
 
     const handleRequestChanges = async () => {
-        const res = await AdsApi.reject(id, "Запрещенный товар", "Комментарий модератора");
+        const res = await AdsApi.requestChanges(
+            id,
+            "Некорректное описание",
+            "Пожалуйста, исправьте детали"
+        );
         onUpdated(res.ad);
     };
 
     return (
-        <Stack direction="row" spacing={2}>
-            <Button
-                variant="contained"
-                color="success"
-                onClick={handleApprove}
-                disabled={status === "approved"}
-            >
-                Одобрить
-            </Button>
+        <>
+            <Stack direction="row" spacing={2}>
+                <Button
+                    variant="contained"
+                    color="success"
+                    onClick={handleApprove}
+                    disabled={status === "approved"}
+                >
+                    Одобрить
+                </Button>
 
-            <Button
-                variant="contained"
-                color="error"
-                onClick={handleReject}
-                disabled={status === "rejected"}
-            >
-                Отклонить
-            </Button>
+                <Button
+                    variant="contained"
+                    color="error"
+                    onClick={() => setRejectOpen(true)}
+                    disabled={status === "rejected"}
+                >
+                    Отклонить
+                </Button>
 
-            <Button
-                variant="outlined"
-                color="warning"
-                onClick={handleRequestChanges}
-            >
-                Доработка
-            </Button>
-        </Stack>
+                <Button
+                    variant="contained"
+                    color="warning"
+                    onClick={handleRequestChanges}
+                >
+                    Доработка
+                </Button>
+            </Stack>
+
+            <RejectModal
+                open={rejectOpen}
+                onClose={() => setRejectOpen(false)}
+                onSubmit={handleRejectSubmit}
+            />
+        </>
     );
 };
