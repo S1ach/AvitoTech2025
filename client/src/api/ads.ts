@@ -1,10 +1,18 @@
 import { api } from "./axios";
 import type { AdsResponse } from "./ads.types";
 
+interface AdsQueryParams {
+    page?: number;
+    category?: string;
+    status?: string;
+    minPrice?: number | string;
+    maxPrice?: number | string;
+}
+
 export const AdsApi = {
-    async getAds(page: number = 1) {
+    async getAds(params: AdsQueryParams) {
         const res = await api.get<AdsResponse>("/ads", {
-            params: { page }
+            params
         });
 
         return res.data;

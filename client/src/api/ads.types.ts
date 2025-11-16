@@ -5,11 +5,11 @@ export interface Ad {
     price: number;
     category: string;
     categoryId: number;
-    status: string;
     priority: string;
     createdAt: string;
     updatedAt: string;
     images: string[];
+    status: "pending" | "approved" | "rejected";
 }
 
 export interface AdsPagination {

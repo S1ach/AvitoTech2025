@@ -13,7 +13,7 @@ const Footer = () => {
             }}
         >
             <Typography variant="body2" color="text.secondary">
-                Made by Timur Gilmanov 2025 ✺◟(◉ᓀ◉)◞✺
+                Made by Timur Gilmanov ✺◟(◉ᓀ◉)◞✺
             </Typography>
         </Box>
     );
