@@ -3,11 +3,13 @@ import AppLayout from "../components/AppLayout/AppLayout";
 import { ListPage } from './ListPage';
 import { ItemPage } from './ItemPage';
 import { StatsPage } from './StatsPage';
+import { ErrorPage } from './ErrorPage';
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <AppLayout />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
@@ -27,7 +29,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '*',
-                element: <div>Страница не найдена</div>,
+                element: <ErrorPage />,
             },
         ],
     },
