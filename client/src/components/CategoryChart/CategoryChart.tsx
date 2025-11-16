@@ -24,7 +24,7 @@ export function CategoryChart({ categories }: Props) {
         <Card>
             <CardContent>
 
-                <ResponsiveContainer width="100%" height={260}>
+                <ResponsiveContainer width="100%" height={320}>
                     <PieChart>
                         <Pie data={data} dataKey="value" nameKey="name" outerRadius={100}>
                             {data.map((_, i) => (

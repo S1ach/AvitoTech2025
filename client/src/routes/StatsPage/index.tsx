@@ -8,6 +8,7 @@ import { PeriodSelector } from "../../components/PeriodSelector/PeriodSelector";
 import { SummaryCards } from "../../components/SummaryCards/SummaryCards";
 import { ActivityChart } from "../../components/ActivityChart/ActivityChart";
 import { CategoryChart } from "../../components/CategoryChart/CategoryChart";
+import { CategoryBarChart } from "../../components/CategoryBarChart/CategoryBarChart";
 
 export function StatsPage() {
     const [period, setPeriod] = useState<StatsPeriod>("today");
@@ -37,10 +38,29 @@ export function StatsPage() {
             </Typography>
             <ActivityChart data={activity} />
 
-            <Typography variant="h6" sx={{ mb: 2, fontSize:"16px", mt: 4 }}>
-                Распределение категорий
-            </Typography>
-            <CategoryChart categories={categories} />
+            <Box
+                sx={{
+                    display: "flex",
+                    gap: 3,
+                    mt: 4,
+                    flexWrap: "wrap"
+                }}
+            >
+                <Box sx={{ flex: "1 1 200px", minWidth: 0 }}>
+                    <Typography variant="h6" sx={{ mb: 2, fontSize: "16px" }}>
+                        Распределение категорий
+                    </Typography>
+                    <CategoryChart categories={categories} />
+                </Box>
+
+                <Box sx={{ flex: "1 1 600px", minWidth: 0 }}>
+                    <Typography variant="h6" sx={{ mb: 2, fontSize: "16px" }}>
+                        График по категориям проверенных объявлений
+                    </Typography>
+                    <CategoryBarChart categories={categories} />
+                </Box>
+            </Box>
+
         </Box>
     );
 }
